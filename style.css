@@ -1,0 +1,240 @@
+body{
+    background-color:#e0d8d6;
+    top:0px;
+    margin: 0px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    opacity:0;
+    display: none;
+  }
+
+main{ 
+    display:flex; 
+    flex-direction: row; 
+}
+
+nav{
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center;
+
+    top:0;
+    height:100vh;
+    width:5%;
+    background-color:#12130f;
+    color:white;
+    writing-mode:vertical-rl;
+    text-orientation: upright;
+
+}
+
+nav a{ 
+    color:white;
+    text-decoration:none;
+    margin-top:10%;
+}
+
+nav a:hover{ 
+    color:#5b9279
+}
+nav h1{ 
+    font-family: "Oswald";
+    background: -webkit-linear-gradient(#5b9279, #8fcb9b,#ffb480, #fec98f );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+    margin-bottom:20%;
+}
+.tutorials h2{ 
+    font-family: "Roboto Mono";
+    color:white;
+    text-align:center;
+}
+
+.tutorials{
+    margin: 10px;
+    width:auto;
+    background-color:#5b9279;
+}
+
+.tblock{ 
+    display:flex; 
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: "Roboto Mono";
+    color:white;
+    background-color:#8fcb9b;
+    width:350px;
+    height:60px;
+    /* border:solid 1px black; */
+
+    transition-property:all;
+    transition: .25s ease-in-out;
+
+}
+
+.tblock h3{ 
+    padding:none;
+}
+
+.tblock ul, a {
+    display:none;
+    padding:0px;
+    color:white;
+    text-decoration:none;
+    list-style:none; 
+}
+
+.tblock:hover{ 
+    border:solid black 1px;
+    height:fit-content;
+    scale: 180% initial;
+    padding:20px;
+    z-index:10000000;
+}
+
+.tblock:hover ul,.tblock:hover a{ 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    list-style:none;
+}
+
+.tblock a:hover{ 
+    color:black;
+}
+
+/* Homework section */
+
+.homework h2{ 
+    font-family: "Roboto Mono";
+    color:white;
+    text-align:center;
+}
+
+.homework{
+    margin: 10px;
+    width:auto;
+    background-color:#8f8073;
+}
+
+.hblock{ 
+    display:flex; 
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: "Roboto Mono";
+    color:white;
+    background-color:#7e7a76;
+    width:350px;
+    height:60px;
+
+    transition-property:all;
+    transition: .25s ease-in-out;
+
+}
+.hblock h3{ 
+    padding:none;
+}
+
+.hblock ul, a {
+    display:none;
+    padding:0px;
+    color:white;
+    text-decoration:none;
+    list-style:none; 
+}
+
+.hblock:hover{ 
+    border:solid black 1px;
+    height:fit-content;
+    scale: 180% initial;
+    padding:20px;
+    z-index:10000000;
+}
+
+.hblock:hover ul,.hblock:hover a{ 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    list-style:none;
+}
+
+.hblock a:hover{ 
+    color:black;
+}
+
+/* Placholder */
+
+.placeholder h2{ 
+    font-family: "Roboto Mono";
+    color:white;
+    text-align:center;
+}
+
+.placeholder{
+    margin: 10px;
+    width:auto;
+    background-color:#fec98f;
+}
+
+.pblock{ 
+    display:flex; 
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: "Roboto Mono";
+    color:white;
+    background-color:#ffb480;
+    width:350px;
+    height:60px;
+    /* border:solid 1px black; */
+
+    transition-property:all;
+    transition: .25s ease-in;
+}
+
+.pblock h3{ 
+    padding:none;
+}
+
+.pblock ul, a {
+    display:none;
+    padding:0px;
+    color:white;
+    text-decoration:none;
+    list-style:none; 
+    transition:.25s;
+
+}
+
+.pblock:hover{ 
+    border:solid black 1px;
+    height:fit-content;
+    scale: 180% initial;
+    padding:20px;
+    z-index:10000000;
+}
+
+.pblock:hover ul,.pblock:hover a{ 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    list-style:none;
+}
+
+.pblock a:hover{ 
+    color:black;
+}
+
+

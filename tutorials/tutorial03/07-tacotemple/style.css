@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main{ 
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap:wrap;
+}
+.card{ 
+    display:flex; 
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content:space-between; 
+    border:solid 1px black;
+    width:43vw;
+    margin-left:5vw;
+    margin-bottom: 5vh;
+}
+
+.card div{ 
+    padding:10px;
+    display:flex; 
+    flex-direction:column; 
+    width:50%;
+}
+
+.card img{ 
+    width:150px; 
+    height: 150px;
+    margin-right:10px;;
+}
