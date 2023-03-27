@@ -1,0 +1,8 @@
+<div class="card">
+    <h2>{{ restaurant.get('name') }}</h2>
+    <img src = "{{ restaurant.get('image_url') }}" height= "200px" width= "200px"/>
+<section class="content">
+    <p><strong>Price:</strong>{{ restaurant.get('price') }}</p>
+    <p><strong>Review Count:</strong> {{ restaurant.get('review_count') }}</p>
+</section>
+</div>
