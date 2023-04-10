@@ -8,48 +8,42 @@ import json
 def get_path():
     return request.host_url + 'api/posts/'
 
+def get_list_of_user_ids_in_my_network(user_id):
+    following = Following.query.filter_by(user_id=user_id).all()
+    me_and_my_friend_ids = [rec.following_id for rec in following]
+    me_and_my_friend_ids.append(user_id)
+    return me_and_my_friend_ids 
+
 class PostListEndpoint(Resource):
 
     def __init__(self, current_user):
         self.current_user = current_user
 
+    # user doesn't specify limit: 20 
+    # user specifies valid int <= 50; return that #
+    # gives you "abc" -> 400 error
+    # user gives you limit = 51 -> 400 error
     def get(self):
-        print("TESTING:", request.args.get('limit'))
-        limit = request.args.get('limit')
         # get posts created by one of these users:
-        #1. Get all the use_ids of people that the user#12 is following
-        following = Following.query.filter_by(user_id=self.current_user.id).all()
+        # #1. Get all the use_ids of people that the user#12 is following
+        # following = Following.query.filter_by(user_id=self.current_user.id).all()
         
         # building a list of our friends' usernames:
-        friends_ids = []
-        for rec in following: 
-                friends_ids.append(rec.following_id)
-        friends_ids.append(self.current_user.id)
-        print(friends_ids)  
-
-#   Alternative syntax:
-# if limit:
-#         posts = Post.query.filter(Post.user_id.in_(friends_ids)).limit(limit)
-# else:
-#         posts = Post.query.filter(Post.user_id.in_(friends_ids)).limit(20)
+        friends_ids = get_list_of_user_ids_in_my_network(self.current_user.id)
  
         try: 
             limit = request.args.get('limit') or 20
             limit = int(limit)
         except: 
             return Response(
-                json.dumps({'error:' : 'no string for limit'}, status=400
+                json.dumps({'error:' : 'no string for limit'}), status=400
                 )
-            )
-            if limit > 20:
+            if limit > 50:
                 return Response(
-                    json.dumps({'error': 'bad data: LImit cannot exceed 200'}, status =400)
-            )
-
+                    json.dumps({'error': 'bad data: Limit cannot exceed 20'}), status =400
+                    )
         posts = Post.query.filter(Post.user_id.in_(friends_ids)).limit(limit)
         return Response(json.dumps([post.to_dict() for post in posts]), mimetype="application/json", status=200)
-
-
 
 def post(self):
         # create a new post based on the data posted in the body 
@@ -77,7 +71,16 @@ class PostDetailEndpoint(Resource):
 
     def get(self, id):
         # get the post based on the id
-        return Response(json.dumps({}), mimetype="application/json", status=200)
+        # yourself and your friends
+        post = Post.query.get(id)
+        me_and_my_friend_ids = get_list_of_user_ids_in_my_network(self.current_user.id)
+        if  post is None or post.user_id not in me_and_my_friend_ids:
+            error_message = {
+                'error': 'post {0} does not exist.'.format(id)
+            }
+            return Response(json.dumps(error_message), mimetype="application/json", status=404)
+        else:
+            return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
 
 def initialize_routes(api):
     # manipulate a list of posts

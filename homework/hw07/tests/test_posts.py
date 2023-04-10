@@ -264,8 +264,8 @@ if __name__ == '__main__':
     suite.addTests([
 
         # List Endpoint Tests:
-        TestPostListEndpoint('test_posts_get_defaults_to_20'),              # get (list view)
-        TestPostListEndpoint('test_posts_get_has_required_data'),           # get (list view)
+        # TestPostListEndpoint('test_posts_get_defaults_to_20'),              # get (list view)
+        # TestPostListEndpoint('test_posts_get_has_required_data'),           # get (list view)
         # TestPostListEndpoint('test_posts_get_limit_argument'),              # get (list view)
         # TestPostListEndpoint('test_posts_get_bad_limit_argument_handled'),  # get (list view)
         # TestPostListEndpoint('test_posts_get_is_authorized'),               # get (list view)
@@ -286,10 +286,10 @@ if __name__ == '__main__':
         # TestPostDetailEndpoint('test_post_delete_id_does_not_exist_404'),   # delete
         # TestPostDetailEndpoint('test_post_delete_unauthorized_id_404'),     # delete
 
-        # TestPostDetailEndpoint('test_post_get'),                            # get (individual)
-        # TestPostDetailEndpoint('test_post_get_invalid_id_404'),             # get (individual) 
-        # TestPostDetailEndpoint('test_post_get_id_does_not_exist_404'),      # get (individual)
-        # TestPostDetailEndpoint('test_post_get_unauthorized_id_404')         # get (individual)
+        TestPostDetailEndpoint('test_post_get'),                            # get (individual)
+        TestPostDetailEndpoint('test_post_get_invalid_id_404'),             # get (individual) 
+        TestPostDetailEndpoint('test_post_get_id_does_not_exist_404'),      # get (individual)
+        TestPostDetailEndpoint('test_post_get_unauthorized_id_404')         # get (individual)
     ])
 
     unittest.TextTestRunner(verbosity=2).run(suite)
