@@ -10,8 +10,8 @@ export default function LikeButton({post, token, requeryPost}) {
 
     async function likeUnlike() {
         console.log(likeId, postId);
-        // if it's liked, unlike it, else like it
 
+        // if it's liked, unlike it, else like it
         if (likeId) {
             console.log('unlike!')
             const response = await fetch(`/api/posts/likes/${likeId}`, {

@@ -23,7 +23,7 @@ export default function App ({token}) {
         fetchProfile();
     }, [token]);
 
-    console.log('access token:', token);
+    // console.log('access token:', token);
     
     return (
         <div>
